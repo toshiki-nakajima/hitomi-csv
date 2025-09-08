@@ -23,6 +23,12 @@ python csv_processer_for_liny.py
 ```
 
 ### 詳細な手順
+#### 0. 前提条件
+仮想環境を作成し、その中で`chardet`などのpackageをインストールします：
+# または現在のプロジェクトディレクトリに作成する場合
+python3 -m venv ./venv
+source ./venv/bin/activate
+pip install chardet
 
 #### 1. CSVファイルのエンコーディング変換
 

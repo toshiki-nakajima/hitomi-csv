@@ -93,13 +93,16 @@ def split_csv_by_size(csv_file_path, max_size_mb=1, encoding='CP932'):
             current_file_path = create_new_file()
             print(f"分割ファイルを作成しています: {current_file_path}")
 
+            # max_size_bytesに余裕を持たせる
+            effective_max_size = max_size_bytes * 0.95  # 5%の余裕を持たせる
+
             # 行ごとに処理
             for line in f:
                 # 行のサイズを計算
                 line_size = len(line.encode(encoding))
 
                 # 現在のファイルに行を追加するとサイズ制限を超える場合、新しいファイルを作成
-                if current_size + line_size > max_size_bytes:
+                if current_size + line_size > effective_max_size:
                     current_file.close()
                     current_file_path = create_new_file()
                     print(f"分割ファイルを作成しています: {current_file_path}")
